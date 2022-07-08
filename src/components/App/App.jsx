@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Header from '../Header/Header';
 import Form from '../Form/Form';
+import axios from 'axios';
 
 // component sudo code
 // component for actual "card". This will be added with each map
@@ -13,6 +14,26 @@ import Form from '../Form/Form';
 // put request via axios
 
 function App() {
+	const [galleryList, setGalleryList] = useState([]);
+
+	useEffect(() => {
+		getGallery();
+	}, []);
+
+	const getGallery = () => {
+		axios
+			.get('/gallery')
+			.then((response) => {
+				console.log(response.data);
+				// setGalleryList(response.data);
+			})
+			.catch((error) => {
+				alert('Error with get request', error);
+			});
+	};
+
+	console.log(galleryList);
+
 	return (
 		<div className='App'>
 			<Header />
