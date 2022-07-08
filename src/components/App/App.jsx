@@ -25,19 +25,21 @@ function App() {
 				<h1 className='App-title'>Gallery of My Life</h1>
 			</header>
 			<form>
-				<label>Image URL:</label>
+				<label>Image name:</label>
 				<input
+					placeholder='goat_small.jpg'
 					className='input'
 					onChange={(event) => setNewPath(event.target.value)}
 					value={newPath}
 				/>
 				<label>Description:</label>
 				<input
+					placeholder='Some Description'
 					className='input'
 					onChange={(event) => setNewDescription(event.target.value)}
 					value={newDescription}
 				/>
-				<button onClick={handleSubmit} type='submit'>
+				<button className='button' onClick={handleSubmit} type='submit'>
 					Save
 				</button>
 			</form>
