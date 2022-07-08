@@ -26,9 +26,17 @@ function App() {
 			</header>
 			<form>
 				<label>Image URL:</label>
-				<input onChange={(event) => setNewPath(event.target.value)} value={newPath} />
+				<input
+					className='input'
+					onChange={(event) => setNewPath(event.target.value)}
+					value={newPath}
+				/>
 				<label>Description:</label>
-				<input onChange={(event) => setNewDescription(event.target.value)} value={newDescription} />
+				<input
+					className='input'
+					onChange={(event) => setNewDescription(event.target.value)}
+					value={newDescription}
+				/>
 				<button onClick={handleSubmit} type='submit'>
 					Save
 				</button>
