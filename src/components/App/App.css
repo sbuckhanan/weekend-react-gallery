@@ -6,10 +6,6 @@
 	background-color: teal;
 }
 
-.App {
-	text-align: center;
-}
-
 .App-header {
 	padding: 1em;
 	color: white;
@@ -29,14 +25,17 @@
 	padding: 5px;
 	box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
 	background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+	display: inline-block;
+	margin: 30px;
 }
 
 .card__content {
-	background: rgb(5, 6, 45);
+	background-color: rgb(5, 6, 45);
 	border-radius: 17px;
 	width: 100%;
 	height: 100%;
 	color: white;
+	text-align: center;
 }
 
 .input {
@@ -61,7 +60,6 @@
 	border-radius: 0.5em;
 	background: #e8e8e8;
 	border: 1px solid #e8e8e8;
-	transition: all 0.3s;
 	box-shadow: 4px 4px 10px #c5c5c5, -4px -4px 10px #cfcfcfa0;
 }
 
@@ -69,4 +67,27 @@
 	border: 1px solid white;
 	transform: scale(1.05);
 	cursor: pointer;
+}
+
+img {
+	border-radius: 5px;
+	margin: 2px;
+}
+
+.likeButton {
+	margin-top: 30px;
+	color: #090909;
+	padding: 0.7em 1.7em;
+	font-size: 14px;
+	border-radius: 0.5em;
+	background-color: #00f67f;
+	border: 1px solid #000000;
+}
+
+.likeButton:hover {
+	transform: scale(1.05);
+	cursor: pointer;
+}
+.description {
+	background-color: rgb(5, 6, 45);
 }
