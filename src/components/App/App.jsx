@@ -3,6 +3,7 @@ import './App.css';
 import Header from '../Header/Header';
 import Form from '../Form/Form';
 import axios from 'axios';
+import GalleryList from '../GalleryList/GalleryList';
 
 // component sudo code
 // component for actual "card". This will be added with each map
@@ -25,7 +26,7 @@ function App() {
 			.get('/gallery')
 			.then((response) => {
 				console.log(response.data);
-				// setGalleryList(response.data);
+				setGalleryList(response.data);
 			})
 			.catch((error) => {
 				alert('Error with get request', error);
@@ -37,8 +38,8 @@ function App() {
 	return (
 		<div className='App'>
 			<Header />
-			<Form />
-			<GalleryList />
+			<Form getGallery={getGallery} />
+			<GalleryList list={galleryList} />
 		</div>
 	);
 }
