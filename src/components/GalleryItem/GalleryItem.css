@@ -1,0 +1,22 @@
+img {
+	border-radius: 5px;
+	margin: 2px;
+}
+
+.likeButton {
+	margin-top: 30px;
+	color: #090909;
+	padding: 0.7em 1.7em;
+	font-size: 14px;
+	border-radius: 0.5em;
+	background-color: #00f67f;
+	border: 1px solid #000000;
+}
+
+.likeButton:hover {
+	transform: scale(1.05);
+	cursor: pointer;
+}
+.description {
+	background-color: rgb(5, 6, 45);
+}
