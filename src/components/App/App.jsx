@@ -40,7 +40,7 @@ function App() {
 		<div className='App'>
 			<Header />
 			<Form getGallery={getGallery} />
-			<GalleryList list={galleryList} />
+			<GalleryList list={galleryList} getGallery={getGallery} />
 		</div>
 	);
 }

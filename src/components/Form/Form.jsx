@@ -1,13 +1,25 @@
+import axios from 'axios';
 import { useState } from 'react';
 import './Form.css';
 
-function Form() {
+function Form({ getGallery }) {
+	//? variables to hold value of inputs
 	const [newPath, setNewPath] = useState('');
 	const [newDescription, setNewDescription] = useState('');
 
+	//? function to handle submit. post request
 	const handleSubmit = (event) => {
 		console.log('submit button');
 		event.preventDefault();
+		axios
+			.post('/gallery', { path: newPath, description: newDescription })
+			.then((response) => {
+				console.log(response);
+				getGallery();
+			})
+			.catch((error) => {
+				alert('Error with post', error);
+			});
 	};
 
 	return (
