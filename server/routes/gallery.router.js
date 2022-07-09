@@ -20,9 +20,9 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
 	const newPost = req.body;
-	const queryText = 'INSERT INTO "gallery" (path, description) VALUES ($1, $2);';
+	const queryText = 'INSERT INTO "gallery" (title, path, description) VALUES ($1, $2, $3);';
 	pool
-		.query(queryText, [newPost.path, newPost.description])
+		.query(queryText, [newPost.title, newPost.path, newPost.description])
 		.then((result) => {
 			res.send(result.rows);
 		})
@@ -35,6 +35,20 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
 	const galleryId = req.params.id;
 	const queryText = 'UPDATE "gallery" SET "likes" = likes+1 WHERE id = $1;';
+	pool
+		.query(queryText, [galleryId])
+		.then((result) => {
+			res.send(result.rows);
+		})
+		.catch((error) => {
+			console.log('Error with get request', error);
+			res.sendStatus(500);
+		});
+}); // END PUT Route
+
+router.delete('/:id', (req, res) => {
+	const galleryId = req.params.id;
+	const queryText = 'DELETE FROM "gallery" WHERE id = $1;';
 	pool
 		.query(queryText, [galleryId])
 		.then((result) => {

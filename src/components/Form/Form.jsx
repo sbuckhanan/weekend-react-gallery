@@ -13,7 +13,7 @@ function Form({ getGallery }) {
 		console.log('submit button');
 		event.preventDefault();
 		axios
-			.post('/gallery', { path: newPath, description: newDescription })
+			.post('/gallery', { title: newTitle, path: newPath, description: newDescription })
 			.then((response) => {
 				console.log(response);
 				getGallery();
