@@ -1,3 +1,5 @@
+-- CREATE DATABASED NAMED "react_gallery"
+
 CREATE TABLE "gallery" (
 	"id" SERIAL PRIMARY KEY,
 	"title" VARCHAR (80) NOT NULL,

@@ -32,12 +32,14 @@ function GalleryItem({ item, getGallery }) {
 
 	return (
 		<>
-			<p className='itemTitle'>{item.title}</p>
-			<img src={item.path} />
-			<p className='description'>{item.description}</p>
-			<ThumbUpIcon className='likeButton' onClick={handleLike} />
-			<DeleteForeverIcon className='deleteButton' onClick={handleDelete} />
-			<p className='likeCount'> LIKES: {item.likes}</p>
+			<div className='container'>
+				<p className='itemTitle'>{item.title}</p>
+				<img src={item.path} />
+				<p className='description'>{item.description}</p>
+				<ThumbUpIcon className='likeButton' onClick={handleLike} />
+				<DeleteForeverIcon className='deleteButton' onClick={handleDelete} />
+				<p className='likeCount'> LIKES: {item.likes}</p>
+			</div>
 		</>
 	);
 }
