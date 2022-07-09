@@ -4,6 +4,7 @@ import './Form.css';
 
 function Form({ getGallery }) {
 	//? variables to hold value of inputs
+	const [newTitle, setNewTitle] = useState('');
 	const [newPath, setNewPath] = useState('');
 	const [newDescription, setNewDescription] = useState('');
 
@@ -20,10 +21,20 @@ function Form({ getGallery }) {
 			.catch((error) => {
 				alert('Error with post', error);
 			});
+		setNewTitle('');
+		setNewPath('');
+		setNewDescription('');
 	};
 
 	return (
 		<form>
+			<label>Title:</label>
+			<input
+				placeholder='Title'
+				className='input'
+				onChange={(event) => setNewTitle(event.target.value)}
+				value={newTitle}
+			/>
 			<label>Image name:</label>
 			<input
 				placeholder='goat_small.jpg'

@@ -11,12 +11,41 @@ img {
 	border-radius: 0.5em;
 	background-color: #00f67f;
 	border: 1px solid #000000;
+	margin-right: 5px;
 }
 
 .likeButton:hover {
 	transform: scale(1.05);
 	cursor: pointer;
 }
+.deleteButton {
+	margin-top: 30px;
+	color: #090909;
+	padding: 0.7em 1.7em;
+	font-size: 14px;
+	border-radius: 0.5em;
+	background-color: red;
+	border: 1px solid #000000;
+	margin-right: 5px;
+	width: 90px;
+	text-align: center;
+	align-items: center;
+}
+
+.deleteButton:hover {
+	transform: scale(1.05);
+	cursor: pointer;
+}
+
 .description {
 	background-color: rgb(5, 6, 45);
+}
+.likeCount {
+	margin-top: 10px;
+	background-color: rgb(5, 6, 45);
+}
+.itemTitle {
+	background-color: rgb(5, 6, 45);
+	margin-bottom: 5px;
+	border-radius: 20px;
 }

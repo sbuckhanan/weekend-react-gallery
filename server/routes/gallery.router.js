@@ -6,7 +6,7 @@ const pool = require('../modules/pool.js');
 // DO NOT MODIFY THIS FILE FOR BASE MODE
 
 router.get('/', (req, res) => {
-	const queryText = 'SELECT * FROM "gallery";';
+	const queryText = 'SELECT * FROM "gallery" ORDER BY "id";';
 	pool
 		.query(queryText)
 		.then((result) => {

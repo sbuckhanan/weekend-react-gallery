@@ -1,5 +1,7 @@
 import axios from 'axios';
 import './GalleryItem.css';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
 function GalleryItem({ item, getGallery }) {
 	const handleLike = () => {
@@ -17,11 +19,12 @@ function GalleryItem({ item, getGallery }) {
 
 	return (
 		<>
+			<p className='itemTitle'>{item.title}</p>
 			<img src={item.path} />
 			<p className='description'>{item.description}</p>
-			<button className='likeButton' onClick={handleLike}>
-				LIKES: {item.likes}
-			</button>
+			<ThumbUpIcon className='likeButton' onClick={handleLike} />
+			<DeleteForeverIcon className='deleteButton' onClick={handleLike} />
+			<p className='likeCount'> LIKES: {item.likes}</p>
 		</>
 	);
 }
