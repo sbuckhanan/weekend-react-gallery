@@ -8,12 +8,34 @@ function Form({ getGallery }) {
 	const [newPath, setNewPath] = useState('');
 	const [newDescription, setNewDescription] = useState('');
 
+	const addFile = (event) => {
+		// console.log(event.target.files[0])
+		setNewPath(event.target.files[0]);
+	};
+
+	const sendImage = (event) => {
+		const data = new FormData();
+
+		data.append('image', newPath);
+
+		axios
+			.post('/gallery/image', data)
+			.then((response) => {
+				console.log(response);
+			})
+			.catch((error) => {
+				alert('Error with post', error);
+			});
+	};
+
 	//? function to handle submit. post request
 	const handleSubmit = (event) => {
 		console.log('submit button');
 		event.preventDefault();
+		sendImage();
+
 		axios
-			.post('/gallery', { title: newTitle, path: newPath, description: newDescription })
+			.post('/gallery', { title: newTitle, file: newPath.name, description: newDescription })
 			.then((response) => {
 				console.log(response);
 				getGallery();
@@ -22,12 +44,11 @@ function Form({ getGallery }) {
 				alert('Error with post', error);
 			});
 		setNewTitle('');
-		setNewPath('');
 		setNewDescription('');
 	};
 
 	return (
-		<form>
+		<form encType='multipart/form-data'>
 			<label>Title:</label>
 			<input
 				placeholder='Title'
@@ -35,13 +56,8 @@ function Form({ getGallery }) {
 				onChange={(event) => setNewTitle(event.target.value)}
 				value={newTitle}
 			/>
-			<label>Image name:</label>
-			<input
-				placeholder='goat_small.jpg'
-				className='input'
-				onChange={(event) => setNewPath(event.target.value)}
-				value={newPath}
-			/>
+			<label>Image:</label>
+			<input type='file' name='image' className='input' onChange={addFile} />
 			<label>Description:</label>
 			<input
 				placeholder='Some Description'

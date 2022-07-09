@@ -1,9 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool.js');
-// const galleryItems = require('../modules/gallery.data');
-
+const multer = require('multer');
 // DO NOT MODIFY THIS FILE FOR BASE MODE
+
+const fileStorageEngine = multer.diskStorage({
+	destination: (req, file, cb) => {
+		cb(null, './public/images');
+	},
+	filename: (req, file, cb) => {
+		// cb(null, Date.now() + '--' + file.originalname);
+		cb(null, file.originalname);
+	},
+});
+
+const upload = multer({ storage: fileStorageEngine });
 
 router.get('/', (req, res) => {
 	const queryText = 'SELECT * FROM "gallery" ORDER BY "id";';
@@ -20,16 +31,22 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
 	const newPost = req.body;
+	console.log(newPost);
+	const path = `images/${newPost.file}`;
 	const queryText = 'INSERT INTO "gallery" (title, path, description) VALUES ($1, $2, $3);';
 	pool
-		.query(queryText, [newPost.title, newPost.path, newPost.description])
+		.query(queryText, [newPost.title, path, newPost.description])
 		.then((result) => {
-			res.send(result.rows);
+			// res.send(result.rows);
 		})
 		.catch((error) => {
 			console.log('Error with get request', error);
-			res.sendStatus(500);
+			// res.sendStatus(500);
 		});
+});
+
+router.post('/image', upload.single('image'), (req, res) => {
+	res.send('File uploaded successfully');
 });
 
 router.put('/:id', (req, res) => {
