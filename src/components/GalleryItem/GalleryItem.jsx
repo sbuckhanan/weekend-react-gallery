@@ -2,8 +2,11 @@ import axios from 'axios';
 import './GalleryItem.css';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import { useState } from 'react';
 
 function GalleryItem({ item, getGallery }) {
+	const [isClicked, setIsClicked] = useState(false);
+
 	const handleLike = () => {
 		const id = item.id;
 		axios
@@ -30,12 +33,20 @@ function GalleryItem({ item, getGallery }) {
 			});
 	};
 
+	const toggleDescription = () => {
+		setIsClicked(!isClicked);
+	};
+
 	return (
 		<>
 			<div className='container'>
 				<p className='itemTitle'>{item.title}</p>
-				<img src={item.path} />
-				<p className='description'>{item.description}</p>
+				<img src={item.path} onClick={toggleDescription} />
+				{isClicked ? (
+					<p className='description'>{item.description}</p>
+				) : (
+					<p className='description'></p>
+				)}
 				<ThumbUpIcon className='likeButton' onClick={handleLike} />
 				<DeleteForeverIcon className='deleteButton' onClick={handleDelete} />
 				<p className='likeCount'> LIKES: {item.likes}</p>
