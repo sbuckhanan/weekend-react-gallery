@@ -8,14 +8,13 @@ function Form({ getGallery }) {
 	const [newPath, setNewPath] = useState('');
 	const [newDescription, setNewDescription] = useState('');
 
-	const addFile = (event) => {
-		// console.log(event.target.files[0])
-		setNewPath(event.target.files[0]);
-	};
+	//? this updates the new pathVariable onChange to the object of the file
+	const addFile = (event) => setNewPath(event.target.files[0]);
 
+	//? this formats the image into the format that is needed for upload and sends it over via post request
 	const sendImage = (event) => {
 		const data = new FormData();
-
+		//? name of input and then name of the variable holding the image
 		data.append('image', newPath);
 
 		axios
@@ -28,7 +27,7 @@ function Form({ getGallery }) {
 			});
 	};
 
-	//? function to handle submit. post request
+	//? function to handle submit. post request with data to go into DB
 	const handleSubmit = (event) => {
 		console.log('submit button');
 		event.preventDefault();

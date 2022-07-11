@@ -5,9 +5,12 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { useState } from 'react';
 
 function GalleryItem({ item, getGallery }) {
+	//? holds the state to show description
 	const [isClicked, setIsClicked] = useState(false);
 
+	//? Handles our put request to update likes
 	const handleLike = () => {
+		//? send over the id of the item
 		const id = item.id;
 		axios
 			.put(`/gallery/${id}`)
@@ -20,7 +23,9 @@ function GalleryItem({ item, getGallery }) {
 			});
 	};
 
+	//? delete from the database
 	const handleDelete = () => {
+		//? send over the id of the item
 		const id = item.id;
 		axios
 			.delete(`/gallery/${id}`)
@@ -33,9 +38,7 @@ function GalleryItem({ item, getGallery }) {
 			});
 	};
 
-	const toggleDescription = () => {
-		setIsClicked(!isClicked);
-	};
+	const toggleDescription = () => setIsClicked(!isClicked);
 
 	return (
 		<>

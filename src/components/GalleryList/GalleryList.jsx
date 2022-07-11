@@ -1,6 +1,7 @@
 import GalleryItem from '../GalleryItem/GalleryItem';
 import './GalleryList.css';
 
+//? past the list array and the getGallery function to be passed down to the gallery item
 function GalleryList({ list, getGallery }) {
 	return (
 		<>

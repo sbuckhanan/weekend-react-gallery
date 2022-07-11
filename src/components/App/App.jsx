@@ -17,11 +17,13 @@ import GalleryList from '../GalleryList/GalleryList';
 function App() {
 	//? Array to hold results from db
 	const [galleryList, setGalleryList] = useState([]);
+
 	//? render on page load
 	useEffect(() => {
 		getGallery();
 	}, []);
-	//? function to request data from server
+
+	//? function to request data from server from DB
 	const getGallery = () => {
 		axios
 			.get('/gallery')
